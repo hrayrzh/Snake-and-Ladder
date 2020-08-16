@@ -54,7 +54,8 @@ $("#addPlayer").on("click", function(e) {
     var player = saapSeedi.addPlayer(playerName);
     
     if (player) {
-        alert("Player '" + playerName + "' successfully added.");
+//        alert("Player '" + playerName + "' successfully added.");
+        alert("«" + playerName + "» խողացողը ավելացված է։");
         $("#playerName").val("");
 				playersTable.innerHTML += 
 					`<tr>

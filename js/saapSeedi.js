@@ -187,7 +187,7 @@ AdPushup (New Delhi, India Office). Check out http://careers.adpushup.com
         }
         this.createBoard();
         
-        var img = new Image('images/face0.gif');
+        var img = new Image('images/source.gif');
         img = new Image('images/face1.png');
         img = new Image('images/face2.png');
         img = new Image('images/face3.png');
@@ -323,7 +323,7 @@ AdPushup (New Delhi, India Office). Check out http://careers.adpushup.com
     
     b.rollDice = function() {
         var dice = document.getElementById('dice');
-        dice.src = 'images/face0.gif';
+        dice.src = 'images/source.gif';
     }
     
     b.showDice = function(value) {

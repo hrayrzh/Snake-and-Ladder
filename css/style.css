@@ -1,6 +1,7 @@
 body {
 	background-image: url(../images/66.jpg);
 	display: flex;
+	margin: 0;
 }
 
 #nav {

@@ -1,0 +1,49 @@
+body {
+	background-image: url(../images/66.jpg);
+	display: flex;
+}
+
+#nav {
+	/*	display: flex;*/
+	/*	justify-content: space-between;*/
+	margin-top: 20px;
+	width: 45%;
+}
+
+#players {
+	margin: 20%;
+}
+
+#players table {
+	border: 1px solid;
+	border-collapse: collapse;
+	width: 70%;
+}
+
+#controls {
+	margin: 0 20%;
+}
+
+#players th,
+#players td {
+	border: 1px solid;
+}
+
+canvas {
+	border: 5px solid #ffffff;
+	position: absolute;
+	/*
+	left: 25%;
+	top: 0px;
+*/
+}
+
+#diceName {
+	margin: 0;
+	font-size: 50px;
+	font-weight: bold;
+}
+
+#diceControl {
+	cursor: pointer;
+}

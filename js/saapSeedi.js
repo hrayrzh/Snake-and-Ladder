@@ -17,8 +17,8 @@ AdPushup (New Delhi, India Office). Check out http://careers.adpushup.com
             runSpeed: 15,
             colors: ["red", "blue", "green", "black"],
             snakeLadderLayer: "images/a.gif",
-            snakes: [{s: 25,e: 5}, {s: 36,e: 2}, {s: 46,e: 29}, {s: 79,e: 42}, {s: 93,e: 53}],
-            ladders: [{s: 8,e: 49}, {s: 22,e: 57}, {s: 54,e: 85}, {s: 61,e: 98}]
+            snakes: [],
+            ladders: [{s: 2,e: 49}, {s: 3,e: 49}, {s: 4,e: 49}, {s: 5,e: 49}]
         };
         this.state = {
             playerCount: 0,
@@ -165,7 +165,7 @@ AdPushup (New Delhi, India Office). Check out http://careers.adpushup.com
                     board.nextPlayer();
                 }
                 //Check win
-                if (player.position == 100) {
+                if (player.position == 49) {
                     board.log("Congrats " + player.name + ", You just won the game.");
                     players.splice(player.id, 1);
                     board.state.playerCount--;
@@ -223,7 +223,7 @@ AdPushup (New Delhi, India Office). Check out http://careers.adpushup.com
             gameBoard.appendChild(canvas);
         }
         
-        var a = 100, b = 91, w = this.width / 10, h = this.height / 10, y = -h, x, color, i;
+        var a = 49, b = 43, w = this.width / 7, h = this.height / 7, y = -h, x, color, i;
         boardBg.font = w / 4 + 'px Georgia';
         while (a > 0) {
             x = 0;
@@ -246,7 +246,7 @@ AdPushup (New Delhi, India Office). Check out http://careers.adpushup.com
             }
             x = 0;
             y += h;
-            for (i = b - 10; i <= a - 10; i++) {
+            for (i = b - 7; i <= a - 7; i++) {
 //                color = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
                 color = '#43cbea';
                 boardBg.fillStyle = color;
@@ -263,8 +263,8 @@ AdPushup (New Delhi, India Office). Check out http://careers.adpushup.com
                 };
                 x += w;
             }
-            a = a - 20;
-            b = b - 20;
+            a = a - 14;
+            b = b - 14;
         }
     }
     

@@ -34,12 +34,12 @@ function movePlayer() {
         //Fire move request after 1 second so that player can shift eyes from dice to board
         setTimeout(function() {
             player.position == 1 ? player.move(player.position + random - 1, undefined, random == 6, updateDiceName) : player.move(player.position + random, undefined, random == 6, updateDiceName);
-            if (random == 6) {
-                //Show message after the piece reaches destination
-                setTimeout(function() {
-                    alert("You get another bonus chance.");
-                }, saapSeedi.config.moveSpeed * 6 + 100);
-            }
+//            if (random == 6) {
+//                //Show message after the piece reaches destination
+//                setTimeout(function() {
+//                    alert("You get another bonus chance.");
+//                }, saapSeedi.config.moveSpeed * 6 + 100);
+//            }
             
             processing = false;
         }, 1000);

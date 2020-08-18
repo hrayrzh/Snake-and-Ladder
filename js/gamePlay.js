@@ -37,7 +37,7 @@ function movePlayer() {
 //            if (random == 6) {
 //                //Show message after the piece reaches destination
 //                setTimeout(function() {
-//                    alert("You get another bonus chance.");
+//                    alert("You get another bonus chance.");//////////////////////////////////////////
 //                }, saapSeedi.config.moveSpeed * 6 + 100);
 //            }
             
@@ -62,7 +62,7 @@ $("#addPlayer").on("click", function(e) {
 						<td>${playerName}</td>
 						<td id="${playerName}">0</td>
 					</tr> `
-//			ավելացնել անունները կողքի թեյբլում
+//			ավելացնել անունները կողքի թեյբլում/////////////////////////////////////////////////////////////////////
 //				console.log();
 //				document.getElementById("players").innerHTML = playerName;
     }

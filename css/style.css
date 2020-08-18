@@ -21,6 +21,14 @@ body {
 	width: 70%;
 }
 
+#popup {
+	margin: 20%;
+	padding: 20px;
+	background-color: antiquewhite;
+	color: red;
+	border: 1px solid;
+}
+
 #controls {
 	margin: 0 20%;
 }

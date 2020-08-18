@@ -34,17 +34,17 @@ function movePlayer() {
         //Fire move request after 1 second so that player can shift eyes from dice to board
         setTimeout(function() {
             player.position == 1 ? player.move(player.position + random - 1, undefined, random == 6, updateDiceName) : player.move(player.position + random, undefined, random == 6, updateDiceName);
-//            if (random == 6) {
-//                //Show message after the piece reaches destination
-//                setTimeout(function() {
-//                    alert("You get another bonus chance.");//////////////////////////////////////////
-//                }, saapSeedi.config.moveSpeed * 6 + 100);
-//            }
+            if (random == 6) {
+                //Show message after the piece reaches destination
+                setTimeout(function() {
+                    alert("Դուք ստանում եք բոնուսային քայլի հնարավորություն");
+                }, saapSeedi.config.moveSpeed * 6 + 100);
+            }
             
             processing = false;
         }, 1000);
     }, Math.floor((Math.random() * 3000) + 1000));
-		console.log(player.name);
+		console.log(player);
 		console.log(player.position);
 }
 
@@ -59,7 +59,8 @@ $("#addPlayer").on("click", function(e) {
         $("#playerName").val("");
 				playersTable.innerHTML += 
 					`<tr>
-						<td>${playerName}</td>
+						<td style="background-color:${player.color}; color:#fff; text-align:center; border: 1px solid black;">${player.id+1}</td>
+						<td style="padding-left: 15px;">${playerName}</td>
 						<td id="${playerName}">0</td>
 					</tr> `
 //			ավելացնել անունները կողքի թեյբլում/////////////////////////////////////////////////////////////////////

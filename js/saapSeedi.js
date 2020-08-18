@@ -50,8 +50,13 @@ const fieldTexts = {
 	49: "Դու հասար Կլիմայի պահպանության։",
 };
 
+function closePopup(){
+	document.getElementById("popup").style.display = "none";
+}
 
-
+function openPopup(){
+	document.getElementById("popup").style.display = "block";
+}
 /*********************************************************************************
 
 Looks like you have good hands in Javascript, We are hiring Javascript Hackers at 
@@ -69,7 +74,7 @@ AdPushup (New Delhi, India Office). Check out http://careers.adpushup.com
             maxPlayers: 4,
             moveSpeed: 150,
             runSpeed: 15,
-            colors: ["red", "blue", "green", "black"],
+            colors: ["red", "orange", "green", "black"],
             snakeLadderLayer: "",
 //            zzzz: "images/face06.png",
             snakes: [],
@@ -113,9 +118,9 @@ AdPushup (New Delhi, India Office). Check out http://careers.adpushup.com
 			
 				
 				var zzzz = new Image();
-        zzzz.src = `images/face${playerId+1}.png`;
+        zzzz.src = `images/student${playerId+1}.png`;
         zzzz.onload = function() {
-            boardFg.drawImage(zzzz,blockX, blockY, 20, 20);
+            boardFg.drawImage(zzzz,gotiX, gotiY, 40, 40);
         }
 			
 			
@@ -139,8 +144,8 @@ AdPushup (New Delhi, India Office). Check out http://careers.adpushup.com
         
         var blockX = board.blocks[position].x;
         var blockY = board.blocks[position].y;
-        var blockW = board.width / 10;
-        var blockH = board.height / 10;
+        var blockW = board.width / 7;
+        var blockH = board.height / 7;
         var boardFg = board.boardFg;
         boardFg.clearRect(blockX, blockY, blockW, blockH);
         
@@ -210,8 +215,8 @@ AdPushup (New Delhi, India Office). Check out http://careers.adpushup.com
                 if (player.position) {
 									let pos = player.position;
 									document.getElementById(player.name).innerHTML = pos;
-									document.getElementById("popup").innerHTML = fieldTexts[pos];
-									
+									document.getElementById("popupText").innerHTML = fieldTexts[pos];
+									openPopup();
 									
 //                    var players_id;
 //                    for (players_id in players) {
@@ -237,7 +242,7 @@ AdPushup (New Delhi, India Office). Check out http://careers.adpushup.com
                 }
                 //Check win
                 if (player.position == 49) {
-                    board.log("Congrats " + player.name + ", You just won the game.");
+                    board.log("Շնորհավոր " + player.name + "ը խաղի հաղթողն է");
                     players.splice(player.id, 1);
                     board.state.playerCount--;
                     isSpecial = false;
@@ -362,7 +367,7 @@ AdPushup (New Delhi, India Office). Check out http://careers.adpushup.com
         var players = this.players, player_id;
         for (player_id in players) {
             if (players[player_id]['name'] == name) {
-                this.log(name + " is already playing, Can't you specify some other name  :/");
+                this.log("«" + name + "» անունով խաղացող արդեն գրանցված է, ընտրեք այլ անուն։");
                 return false;
             }
         }

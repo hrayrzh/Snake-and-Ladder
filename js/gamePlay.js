@@ -63,9 +63,6 @@ $("#addPlayer").on("click", function(e) {
 						<td style="padding-left: 15px;">${playerName}</td>
 						<td id="${playerName}">0</td>
 					</tr> `
-//			ավելացնել անունները կողքի թեյբլում/////////////////////////////////////////////////////////////////////
-//				console.log();
-//				document.getElementById("players").innerHTML = playerName;
     }
     
     if (saapSeedi.config.maxPlayers == saapSeedi.state.playerCount) {
@@ -82,9 +79,3 @@ $("#diceControl").on("click", function(e) {
     }
     movePlayer();
 });
-//
-//if (window.innerHeight > window.innerWidth) {
-//    $("#controls").css({top: window.innerWidth + 20,position: 'absolute'});
-//} else {
-//    $("#controls").css({left: window.innerHeight + 20,position: 'absolute'});
-//}

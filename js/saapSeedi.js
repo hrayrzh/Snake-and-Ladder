@@ -1,23 +1,3 @@
-function openPopup(pos) {
-	document.getElementById("popupText").innerHTML = "";
-	if(fieldTexts[pos].head){
-		document.getElementById("popupText").innerHTML = `<h1>${fieldTexts[pos].head}</h1>`;
-	}
-	document.getElementById("popupText").innerHTML += `<p>${fieldTexts[pos].content}</p>`;
-	document.getElementById("popup").style.backgroundColor = fieldTexts[pos].bgColor;
-	document.getElementById("popup").style.border = fieldTexts[pos].borderColor;
-	document.getElementById("popup").style.color = fieldTexts[pos].color;
-	
-	document.getElementById("popup").style.display = "block";
-	document.getElementById("popupScreen").style.display = "block";
-}
-
-function closePopup() {
-	document.getElementById("popup").style.display = "none";
-	document.getElementById("popupScreen").style.display = "none";
-}
-
-
 (function (w, d) {
 	function board(width, height) {
 		this.boardBg = null;
@@ -29,10 +9,40 @@ function closePopup() {
 			moveSpeed: 150,
 			runSpeed: 15,
 			colors: ["red", "orange", "green", "black"],
-			snakeLadderLayer: "",
-			snakes: [],
-			ladders: []
-			//            ladders: [{s: 2,e: 49}, {s: 3,e: 49}, {s: 4,e: 49}, {s: 5,e: 49}]
+			snakeLadderLayer: "images/map.png",
+			snakes: [{
+				s: 46,
+				e: 32
+			}, {
+				s: 36,
+				e: 22
+			}, {
+				s: 26,
+				e: 18
+			}, {
+				s: 15,
+				e: 12
+			}, {
+				s: 10,
+				e: 5
+			}],
+			ladders: [{
+				s: 4,
+				e: 19
+			}, {
+				s: 16,
+				e: 31
+			}, {
+				s: 21,
+				e: 23
+			}, {
+				s: 33,
+				e: 39
+			}, {
+				s: 41,
+				e: 45
+			}]
+			//            ladders: []
 		};
 		this.state = {
 			playerCount: 0,
@@ -64,8 +74,6 @@ function closePopup() {
 		var gotiX = blockX + (blockW / 10) + gotiR + (playerId * gotiR);
 		var gotiY = blockY + (0.9 * blockH) - gotiR;
 		var boardFg = board.boardFg;
-		console.log(boardFg);
-		console.log(playerId);
 
 
 		var playerImg = new Image();
@@ -153,7 +161,7 @@ function closePopup() {
 				//(popup)
 				if (player.position) {
 					let pos = player.position;
-					console.log(player.name);
+					document.getElementById(player.name).innerHTML = pos;
 					openPopup(pos);
 				}
 
@@ -162,7 +170,7 @@ function closePopup() {
 				}
 				//Check win
 				if (player.position == 49) {
-					board.log("Շնորհավո՛ր, " + player.name + "ը խաղի հաղթողն է");
+					log("Շնորհավո՛ր, " + player.name + "ը խաղի հաղթողն է");
 					players.splice(player.id, 1);
 					board.state.playerCount--;
 					isSpecial = false;
@@ -283,7 +291,7 @@ function closePopup() {
 
 	b.addPlayer = function (name) {
 		if (!name) {
-			this.log('Խաղացողին ավելացնելու համար անհրաժեշտ է նշել անունը։');
+			log('Խաղացողին ավելացնելու համար անհրաժեշտ է նշել անունը։', "red");
 			return false;
 		}
 
@@ -291,14 +299,14 @@ function closePopup() {
 			player_id;
 		for (player_id in players) {
 			if (players[player_id]['name'] == name) {
-				this.log("«" + name + "» անունով խաղացող արդեն գրանցված է, ընտրեք այլ անուն։");
+				log("«" + name + "» անունով խաղացող արդեն գրանցված է, ընտրեք այլ անուն։", "red");
 				return false;
 			}
 		}
 
 		var id = players.length;
 		if (id >= this.config.maxPlayers) {
-			this.log("Maximum players limit reached, Can't add more players");
+			log("Maximum players limit reached, Can't add more players");
 			return false;
 		}
 
@@ -343,27 +351,52 @@ function closePopup() {
 	b.showDice = function (value) {
 		value = parseInt(value);
 		if (isNaN(value) || value < 1 || value > 6) {
-			this.log("Invalid value.");
+			log("Invalid value.", "red");
 			return false;
 		}
 		var dice = document.getElementById('dice');
 		dice.src = 'images/face' + value + '.png';
 	}
 
-	b.log = function (message) {
-		document.getElementById("popupText").innerHTML = 
-			`<h1>Ուշադրությո՛ւն</h1>
-			<p>${message}</p>`;
-		document.getElementById("popup").style.backgroundColor = "red";
-		document.getElementById("popup").style.border = "3px solid black";
-		document.getElementById("popup").style.color = "#fff";
-	
-		document.getElementById("popup").style.display = "block";
-		document.getElementById("popupScreen").style.display = "block";
-//		alert(message);
-		//console.log(message);
-	}
-
 	b.player = player;
 	w.saapSeedi = new board(w.innerHeight - 10, w.innerHeight - 10);
 })(window, document);
+
+
+function log(message, bg, h1 = "Ուշադրությո՛ւն", color = "#fff", brd = "3px solid black") {
+	const word = "հաղթող";
+	if (message.includes(word)) {
+		document.getElementById("popupText").innerHTML =
+			`<h1>Շնորհավո՛ր</h1>
+			<p>${message}</p>`;
+		document.getElementById("popupText").innerHTML +=
+			`<button id="popupButton" onclick="closePopup(123)">Սկսել նոր խաղ</button>`;
+	} else {
+		document.getElementById("popupText").innerHTML =
+			`<h1>${h1}</h1>
+			<p>${message}</p>`;
+		document.getElementById("popupText").innerHTML +=
+			`<button id="popupButton" onclick="closePopup()">Փակել</button>`;
+	}
+	document.getElementById("popup").style.backgroundColor = bg;
+	document.getElementById("popup").style.border = brd;
+	document.getElementById("popup").style.color = color;
+
+	popup('block');
+}
+
+function popup(state) {
+	document.getElementById("popup").style.display = state;
+	document.getElementById("popupScreen").style.display = state;
+}
+
+function openPopup(pos) {
+	log(fieldTexts[pos].content, fieldTexts[pos].bgColor, `Դաշտ ${Object.keys(fieldTexts)[pos]-1}`, fieldTexts[pos].color, fieldTexts[pos].borderColor);
+}
+
+function closePopup(z = "") {
+	if (z == 123) {
+		location.reload();
+	}
+	popup('none');
+}

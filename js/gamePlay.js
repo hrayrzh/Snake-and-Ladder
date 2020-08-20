@@ -45,8 +45,8 @@ function movePlayer() {
 			processing = false;
 		}, 1000);
 	}, Math.floor((Math.random() * 3000) + 1000));
-	console.log(player);
-	console.log(player.position);
+//	console.log(player);
+//	console.log(player.position);
 }
 
 $("#addPlayer").on("click", function (e) {
@@ -55,14 +55,7 @@ $("#addPlayer").on("click", function (e) {
 	var player = saapSeedi.addPlayer(playerName);
 
 	if (player) {
-		document.getElementById("popupText").innerHTML =
-			`<p>«${playerName}» խողացողը ավելացված է։</p>`;
-		document.getElementById("popup").style.backgroundColor = "green";
-		document.getElementById("popup").style.border = "3px solid black";
-		document.getElementById("popup").style.color = "#fff";
-
-		document.getElementById("popup").style.display = "block";
-		document.getElementById("popupScreen").style.display = "block";
+		log(`«${playerName}» խողացողը ավելացված է։`, 'green');
 
 		$("#playerName").val("");
 		playersTable.innerHTML +=

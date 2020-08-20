@@ -366,16 +366,16 @@
 function log(message, bg, h1 = "Ուշադրությո՛ւն", color = "#fff", brd = "3px solid black") {
 	const word = "հաղթող";
 	if (message.includes(word)) {
-		document.getElementById("popupText").innerHTML =
+		document.getElementById("popup").innerHTML =
 			`<h1>Շնորհավո՛ր</h1>
 			<p>${message}</p>`;
-		document.getElementById("popupText").innerHTML +=
+		document.getElementById("popup").innerHTML +=
 			`<button id="popupButton" onclick="closePopup(123)">Սկսել նոր խաղ</button>`;
 	} else {
-		document.getElementById("popupText").innerHTML =
+		document.getElementById("popup").innerHTML =
 			`<h1>${h1}</h1>
 			<p>${message}</p>`;
-		document.getElementById("popupText").innerHTML +=
+		document.getElementById("popup").innerHTML +=
 			`<button id="popupButton" onclick="closePopup()">Փակել</button>`;
 	}
 	document.getElementById("popup").style.backgroundColor = bg;
@@ -391,6 +391,9 @@ function popup(state) {
 }
 
 function openPopup(pos) {
+	if(pos==="rules"){
+		log(fieldTexts[101].content, fieldTexts[101].bgColor, fieldTexts[101].head, fieldTexts[101].color, fieldTexts[101].borderColor);
+	}
 	log(fieldTexts[pos].content, fieldTexts[pos].bgColor, `Դաշտ ${Object.keys(fieldTexts)[pos]-1}`, fieldTexts[pos].color, fieldTexts[pos].borderColor);
 }
 

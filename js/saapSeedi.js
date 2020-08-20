@@ -1,12 +1,22 @@
+function openPopup(pos) {
+	document.getElementById("popupText").innerHTML = "";
+	if(fieldTexts[pos].head){
+		document.getElementById("popupText").innerHTML = `<h1>${fieldTexts[pos].head}</h1>`;
+	}
+	document.getElementById("popupText").innerHTML += `<p>${fieldTexts[pos].content}</p>`;
+	document.getElementById("popup").style.backgroundColor = fieldTexts[pos].bgColor;
+	document.getElementById("popup").style.border = fieldTexts[pos].borderColor;
+	document.getElementById("popup").style.color = fieldTexts[pos].color;
+	
+	document.getElementById("popup").style.display = "block";
+	document.getElementById("popupScreen").style.display = "block";
+}
+
 function closePopup() {
 	document.getElementById("popup").style.display = "none";
 	document.getElementById("popupScreen").style.display = "none";
 }
 
-function openPopup() {
-	document.getElementById("popup").style.display = "block";
-	document.getElementById("popupScreen").style.display = "block";
-}
 
 (function (w, d) {
 	function board(width, height) {
@@ -101,7 +111,7 @@ function openPopup() {
 			return false;
 		}
 
-		if (position > 100) {
+		if (position > 49) {
 			if (!isSpecial) {
 				board.nextPlayer();
 			}
@@ -143,12 +153,8 @@ function openPopup() {
 				//(popup)
 				if (player.position) {
 					let pos = player.position;
-					document.getElementById(player.name).innerHTML = pos;
-					document.getElementById("popupText").innerHTML = fieldTexts[pos].content;
-					document.getElementById("popup").style.backgroundColor = fieldTexts[pos].bgColor;
-					document.getElementById("popup").style.border = fieldTexts[pos].borderColor;
-					document.getElementById("popup").style.color = fieldTexts[pos].color;
-					openPopup();
+					console.log(player.name);
+					openPopup(pos);
 				}
 
 				if (!isSpecial) {
@@ -277,7 +283,7 @@ function openPopup() {
 
 	b.addPlayer = function (name) {
 		if (!name) {
-			this.log('Please specify name of the player.');
+			this.log('Խաղացողին ավելացնելու համար անհրաժեշտ է նշել անունը։');
 			return false;
 		}
 
@@ -345,7 +351,16 @@ function openPopup() {
 	}
 
 	b.log = function (message) {
-		alert(message);
+		document.getElementById("popupText").innerHTML = 
+			`<h1>Ուշադրությո՛ւն</h1>
+			<p>${message}</p>`;
+		document.getElementById("popup").style.backgroundColor = "red";
+		document.getElementById("popup").style.border = "3px solid black";
+		document.getElementById("popup").style.color = "#fff";
+	
+		document.getElementById("popup").style.display = "block";
+		document.getElementById("popupScreen").style.display = "block";
+//		alert(message);
 		//console.log(message);
 	}
 

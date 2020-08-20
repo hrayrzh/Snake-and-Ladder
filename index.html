@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<title>Saap Seedi - Online Snake and Ladder Game</title>
 	<link href="css/style.css" rel="stylesheet">
 </head>
+
 <body>
 	<div id="nav">
 		<div id="controls">
@@ -21,9 +23,9 @@
 		<div id="players">
 			<table id="playersTable">
 				<tr>
-					<th> </th>
-					<th>Խաղացող</th>
-					<th>Դաշտ</th>
+					<th style="width:10%; border: none;"> </th>
+					<th style="width:65%;">Խաղացող</th>
+					<th style="width:25%;">Դաշտ</th>
 				</tr>
 			</table>
 		</div>
@@ -34,10 +36,14 @@
 			<button id="popupButton" onclick="closePopup()">Փակել</button>
 		</div>
 	</div>
+	<div id="rules">
+		<button onclick="openPopup(101)">Կանոններ</button>
+	</div>
 	<div id="gameBoard"></div>
 	<script type="text/javascript" src="js/data.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/saapSeedi.js"></script>
 	<script type="text/javascript" src="js/gamePlay.js"></script>
 </body>
+
 </html>

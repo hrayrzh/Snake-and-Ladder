@@ -1,22 +1,51 @@
 body {
 	background-image: url(../images/66.jpg);
+	background-position: top;
 	display: flex;
 	margin: 0;
 }
 
 #nav {
-	margin-top: 20px;
 	width: 45%;
+}
+
+#controls {
+	margin: 5% 20%;
 }
 
 #players {
 	margin: 20%;
 }
 
+#rules {
+	position: absolute;
+	bottom: 4%;
+	left: 2%;
+}
+
 #players table {
-	border: 1px solid !important;
 	border-collapse: collapse;
-	width: 70%;
+	width: 100%;
+}
+
+#players th,
+#players td {
+	border: 3px solid black;
+}
+
+tr td.playerColor {
+	color: #fff;
+	text-align: center;
+	font-weight: 900;
+}
+
+.playerColor + td {
+	padding-left: 15px;
+}
+
+#rules button {
+	width: 150px;
+	padding: 15px;
 }
 
 #popupScreen {
@@ -33,20 +62,11 @@ body {
 #popup {
 	display: none;
 	position: absolute;
-	top: 40%;
+	top: 25%;
 	left: 25%;
 	right: 25%;
 	padding: 20px;
 	z-index: 10;
-}
-
-#controls {
-	margin: 0 20%;
-}
-
-#players th,
-#players td {
-	border: 1px solid;
 }
 
 canvas {
@@ -62,4 +82,16 @@ canvas {
 
 #diceControl {
 	cursor: pointer;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#playerName {
+	padding: 5px;
+	width: 50%;
+}
+
+#addPlayer {
+	width: 40%;
+	padding: 5px;
 }

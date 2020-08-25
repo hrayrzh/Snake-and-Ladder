@@ -9,7 +9,7 @@
 			moveSpeed: 150,
 			runSpeed: 15,
 			colors: ["red", "orange", "green", "black"],
-			snakeLadderLayer: "images/map.png",
+//			snakeLadderLayer: "images/map.png",
 			snakes: [{
 				s: 46,
 				e: 32
@@ -154,15 +154,20 @@
 			//Check snake or ladder
 			var check = board.isClear(player.position);
 			if (check) {
-				setTimeout(function () {
+				console.log(player);
+				let pos = player.position;
+				document.getElementById(player.name).innerHTML = pos;
+				openPopup(pos);
+				setTimeout(function () {				
 					player.move(check, board.config.runSpeed, isSpecial, callback);
 				}, 1000);
 			} else {
 				//(popup)
 				if (player.position) {
 					let pos = player.position;
+					console.log(player);
 					document.getElementById(player.name).innerHTML = pos;
-					openPopup(pos);
+				openPopup(pos);
 				}
 
 				if (!isSpecial) {
@@ -204,21 +209,21 @@
 		const gameBoard = document.getElementById("gameBoard");
 		var canvas = document.createElement('canvas');
 		canvas.height = this.height;
-		canvas.width = this.width;
+		canvas.width = this.width*1.49;
 		canvas.style.zIndex = 1;
 		gameBoard.appendChild(canvas);
 		var boardBg = this.boardBg = canvas.getContext('2d');
 
 		canvas = document.createElement('canvas');
 		canvas.height = this.height;
-		canvas.width = this.width;
+		canvas.width = this.width*1.49;
 		canvas.style.zIndex = 2;
 		gameBoard.appendChild(canvas);
 		var boardFg = this.boardFg = canvas.getContext('2d');
 
 		canvas = document.createElement('canvas');
 		canvas.height = this.height;
-		canvas.width = this.width;
+		canvas.width = this.width*1.49;
 		canvas.style.zIndex = 3;
 		var snakeLadderLayer = new Image();
 		snakeLadderLayer.src = this.config.snakeLadderLayer;
@@ -229,7 +234,7 @@
 
 		var a = 49,
 			b = 43,
-			w = this.width / 7,
+			w = this.width / 4.7,
 			h = this.height / 7,
 			y = -h,
 			x, color, i;
@@ -244,7 +249,7 @@
 				boardBg.strokeRect(x, y, w, h);
 				boardBg.fillStyle = '#ffffff';
 				boardBg.strokeStyle = '#ffffff';
-				boardBg.font = w / 5 + 'px Comic Sans MS';
+				boardBg.font = w / 7 + 'px Comic Sans MS';
 				boardBg.fillText(`${i}`, x + (w / 10), y + (h / 4));
 				boardBg.font = w / 10 + 'px Comic Sans MS';
 
@@ -270,7 +275,7 @@
 				boardBg.strokeRect(x, y, w, h);
 				boardBg.fillStyle = '#ffffff';
 				boardBg.strokeStyle = '#ffffff';
-				boardBg.font = w / 5 + 'px Comic Sans MS';
+				boardBg.font = w / 7 + 'px Comic Sans MS';
 				boardBg.fillText(`${i}`, x + (w / 10), y + (h / 4));
 
 				//                boardBg.fillStyle = 'red';
@@ -391,7 +396,7 @@ function popup(state) {
 }
 
 function openPopup(pos) {
-	if(pos==="rules"){
+	if (pos === "rules") {
 		log(fieldTexts[101].content, fieldTexts[101].bgColor, fieldTexts[101].head, fieldTexts[101].color, fieldTexts[101].borderColor);
 	}
 	log(fieldTexts[pos].content, fieldTexts[pos].bgColor, `Դաշտ ${Object.keys(fieldTexts)[pos]-1}`, fieldTexts[pos].color, fieldTexts[pos].borderColor);

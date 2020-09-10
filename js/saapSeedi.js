@@ -9,7 +9,7 @@
 			moveSpeed: 150,
 			runSpeed: 15,
 			colors: ["red", "orange", "green", "black"],
-//			snakeLadderLayer: "images/map.png",
+//			snakeLadderLayer: "images/Test.jpg",
 			snakes: [{
 				s: 46,
 				e: 32
@@ -243,6 +243,8 @@
 			y += h;
 			for (i = b; i <= a; i++) {
 				//                color = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+				
+				
 				color = '#0061cc';
 				boardBg.fillStyle = color;
 				boardBg.fillRect(x, y, w, h);
@@ -251,12 +253,23 @@
 				boardBg.strokeStyle = '#ffffff';
 				boardBg.font = w / 7 + 'px Comic Sans MS';
 				boardBg.fillText(`${i}`, x + (w / 10), y + (h / 4));
-				boardBg.font = w / 10 + 'px Comic Sans MS';
-
-				//								boardBg.fillStyle = 'red';
-				//								boardBg.font = w / 10 + 'px Comic Sans MS';
-				//								console.log(fieldTexts[i]);
-				//                boardBg.fillText(fieldTexts[i], x + (w / 4), y + (h / 1.8));
+//				boardBg.font = w / 10 + 'px Comic Sans MS';
+				
+				
+				((x, y) => {
+					var sectionimg = new Image();
+				sectionimg.src = 'images/Test.jpg';
+				console.log(x);
+				sectionimg.onload = function () {
+				console.log(x);
+					boardBg.drawImage(sectionimg, x, y, w, h);
+				}})(x, y)
+				
+				
+//												boardBg.fillStyle = 'red';
+//												boardBg.font = w / 10 + 'px Comic Sans MS';
+//												console.log(fieldTexts[i]);
+//				                boardBg.fillText(fieldTexts[i], x + (w / 4), y + (h / 1.8));
 
 				this.blocks[i] = {
 					x: x,
@@ -282,6 +295,14 @@
 				//								boardBg.font = w / 10 + 'px Comic Sans MS';
 				//								console.log(fieldTexts[i]);	
 				//                boardBg.fillText(fieldTexts[i], x + (w / 4), y + (h/1.8));
+				((x, y) => {
+					var sectionimg = new Image();
+				sectionimg.src = 'images/Test.jpg';
+				sectionimg.onload = function () {
+					boardBg.drawImage(sectionimg, x , y, w, h);
+				}})(x, y)
+				
+				
 				this.blocks[i] = {
 					x: x,
 					y: y,

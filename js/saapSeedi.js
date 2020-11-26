@@ -1,4 +1,7 @@
 (function (w, d) {
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    window.gameType = url.searchParams.get("type") || 1;
 	function board(width, height) {
 		this.boardBg = null;
 		this.boardFg = null;
@@ -9,7 +12,7 @@
 			moveSpeed: 150,
 			runSpeed: 15,
 			colors: ["red", "orange", "green", "blue", "purple"],
-			snakeLadderLayer: "images/arrow.png",
+			snakeLadderLayer: `images/game${window.gameType}/arrow.png`,
 			snakes: [{
 				s: 10,
 				e: 3
@@ -263,7 +266,7 @@
 				
 				((x, y, i) => {
 					var sectionimg = new Image();
-				sectionimg.src = `images/fields/n${i}.jpg`;
+				sectionimg.src = `images/game${gameType}/n${i}.jpg`;
 //				console.log(b);
 				sectionimg.onload = function () {
 //				console.log(x);
@@ -301,7 +304,7 @@
 				//                boardBg.fillText(fieldTexts[i], x + (w / 4), y + (h/1.8));
 				((x, y, i) => {
 					var sectionimg = new Image();
-				sectionimg.src = `images/fields/n${i}.jpg`;
+				sectionimg.src = `images/game${gameType}/n${i}.jpg`;
 				sectionimg.onload = function () {
 					boardBg.drawImage(sectionimg, x , y, w, h);
 				}})(x, y, i)
@@ -396,10 +399,10 @@
 
 
 function log(message, bg, h1 = "Ուշադրությո՛ւն", color = "#fff", brd = "3px solid black", pos) {
-	const word = "հաղթող";
+	const word = "հաղթողն";
 	if(50>pos && pos>0){
         document.getElementById("popup").innerHTML =
-			`<img src="images/fields/n${pos}.jpg" alt="">`;
+			`<img src="images/game${gameType}/n${pos}.jpg" alt="">`;
 		document.getElementById("popup").innerHTML +=
 			`<button id="popupButton" onclick="closePopup()" style="position: absolute; right: 20%;">X</button>`;
 	} else if (message.includes(word)) {

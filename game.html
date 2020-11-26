@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Snake and Ladder</title>
+	<link href="css/style.css" rel="stylesheet">
+	<link rel="shortcut icon" href="images/logo.jpg" type="image/png">
+</head>
+<body>
+	<div id="nav">
+		<div id="controls">
+			<table id="diceControl">
+				<tr>
+					<td><img src="images/face0.png" id="dice"></td>
+					<td>
+						<p id="diceName"></p>
+					</td>
+				</tr>
+			</table>
+			<input type="text" placeholder="Նոր խաղացողի անունը" id="playerName"> <button id="addPlayer">Ավելացնել խաղացող</button>
+		</div>
+		<div id="players">
+			<table id="playersTable">
+				<tr>
+					<th style="width:10%; border: none;"> </th>
+					<th style="width:65%;">Խաղացող</th>
+					<th style="width:25%;">Դաշտ</th>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div id="popupScreen">
+		<div id="popup">
+		</div>
+	</div>
+	<div id="rules">
+		<button onclick="openPopup('rules')">Կանոններ</button>
+	</div>
+	<div id="gameBoard"></div>
+	<script type="text/javascript" src="js/data.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/saapSeedi.js"></script>
+	<script type="text/javascript" src="js/gamePlay.js"></script>
+</body>
+
+</html>

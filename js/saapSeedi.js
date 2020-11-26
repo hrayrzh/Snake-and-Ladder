@@ -5,41 +5,47 @@
 		this.width = width;
 		this.height = height;
 		this.config = {
-			maxPlayers: 4,
+			maxPlayers: 5,
 			moveSpeed: 150,
 			runSpeed: 15,
-			colors: ["red", "orange", "green", "black"],
-//			snakeLadderLayer: "images/Test.jpg",
+			colors: ["red", "orange", "green", "blue", "purple"],
+			snakeLadderLayer: "images/arrow.png",
 			snakes: [{
-				s: 46,
-				e: 32
-			}, {
-				s: 36,
-				e: 22
-			}, {
-				s: 26,
-				e: 18
+				s: 10,
+				e: 3
 			}, {
 				s: 15,
 				e: 12
 			}, {
-				s: 10,
-				e: 5
+				s: 20,
+				e: 8
+			}, {
+				s: 29,
+				e: 16
+			}, {
+				s: 40,
+				e: 33
+			}, {
+				s: 46,
+				e: 36
 			}],
 			ladders: [{
-				s: 4,
+				s: 5,
+				e: 9
+			}, {
+				s: 11,
 				e: 19
 			}, {
-				s: 16,
-				e: 31
+				s: 17,
+				e: 30
 			}, {
 				s: 21,
-				e: 23
+				e: 25
 			}, {
-				s: 33,
-				e: 39
+				s: 35,
+				e: 38
 			}, {
-				s: 41,
+				s: 42,
 				e: 45
 			}]
 			//            ladders: []
@@ -77,7 +83,7 @@
 
 
 		var playerImg = new Image();
-		playerImg.src = `images/student${playerId+1}.png`;
+		playerImg.src = `images/players/player${playerId+1}.png`;
 		playerImg.onload = function () {
 			boardFg.drawImage(playerImg, gotiX, gotiY, 40, 40);
 		}
@@ -255,15 +261,14 @@
 				boardBg.fillText(`${i}`, x + (w / 10), y + (h / 4));
 //				boardBg.font = w / 10 + 'px Comic Sans MS';
 				
-				
-				((x, y) => {
+				((x, y, i) => {
 					var sectionimg = new Image();
-				sectionimg.src = 'images/Test.jpg';
-				console.log(x);
+				sectionimg.src = `images/fields/n${i}.jpg`;
+//				console.log(b);
 				sectionimg.onload = function () {
-				console.log(x);
+//				console.log(x);
 					boardBg.drawImage(sectionimg, x, y, w, h);
-				}})(x, y)
+				}})(x, y, i)
 				
 				
 //												boardBg.fillStyle = 'red';
@@ -290,17 +295,16 @@
 				boardBg.strokeStyle = '#ffffff';
 				boardBg.font = w / 7 + 'px Comic Sans MS';
 				boardBg.fillText(`${i}`, x + (w / 10), y + (h / 4));
-
 				//                boardBg.fillStyle = 'red';
 				//								boardBg.font = w / 10 + 'px Comic Sans MS';
 				//								console.log(fieldTexts[i]);	
 				//                boardBg.fillText(fieldTexts[i], x + (w / 4), y + (h/1.8));
-				((x, y) => {
+				((x, y, i) => {
 					var sectionimg = new Image();
-				sectionimg.src = 'images/Test.jpg';
+				sectionimg.src = `images/fields/n${i}.jpg`;
 				sectionimg.onload = function () {
 					boardBg.drawImage(sectionimg, x , y, w, h);
-				}})(x, y)
+				}})(x, y, i)
 				
 				
 				this.blocks[i] = {
@@ -389,15 +393,22 @@
 })(window, document);
 
 
-function log(message, bg, h1 = "Ուշադրությո՛ւն", color = "#fff", brd = "3px solid black") {
+
+
+function log(message, bg, h1 = "Ուշադրությո՛ւն", color = "#fff", brd = "3px solid black", pos) {
 	const word = "հաղթող";
-	if (message.includes(word)) {
+	if(50>pos && pos>0){
+        document.getElementById("popup").innerHTML =
+			`<img src="images/fields/n${pos}.jpg" alt="">`;
+		document.getElementById("popup").innerHTML +=
+			`<button id="popupButton" onclick="closePopup()" style="position: absolute; right: 20%;">X</button>`;
+	} else if (message.includes(word)) {
 		document.getElementById("popup").innerHTML =
 			`<h1>Շնորհավո՛ր</h1>
 			<p>${message}</p>`;
 		document.getElementById("popup").innerHTML +=
 			`<button id="popupButton" onclick="closePopup(123)">Սկսել նոր խաղ</button>`;
-	} else {
+    } else {
 		document.getElementById("popup").innerHTML =
 			`<h1>${h1}</h1>
 			<p>${message}</p>`;
@@ -420,7 +431,7 @@ function openPopup(pos) {
 	if (pos === "rules") {
 		log(fieldTexts[101].content, fieldTexts[101].bgColor, fieldTexts[101].head, fieldTexts[101].color, fieldTexts[101].borderColor);
 	}
-	log(fieldTexts[pos].content, fieldTexts[pos].bgColor, `Դաշտ ${Object.keys(fieldTexts)[pos]-1}`, fieldTexts[pos].color, fieldTexts[pos].borderColor);
+	log(null, null, null, null, null, pos);
 }
 
 function closePopup(z = "") {

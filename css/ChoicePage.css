@@ -1,0 +1,40 @@
+body {
+    background-image: url(../images/cover.png);
+    background-size: cover;
+}
+
+header{
+    display: flex;
+}
+
+header a{
+    text-decoration: none;
+}
+
+header img{
+    height: 150px;
+}
+
+header h1{
+    font-family: system-ui;
+    font-size: 40px;
+    margin: 40px;
+}
+
+main{
+    padding: 20px;
+}
+
+main ul{
+    padding: 0 100px;
+    font-size: 20px;
+}
+
+main li{
+    margin: 15px 0;
+}
+
+main a{
+    color: black;
+    text-decoration: underline;
+}

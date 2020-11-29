@@ -1,5 +1,5 @@
 body {
-	background-image: url(../images/66.jpg);
+	background-image: url(../images/cover.png);
 	background-position: top;
 	display: flex;
 	margin: 0;
@@ -62,7 +62,7 @@ tr td.playerColor {
 #popup {
 	display: none;
 	position: absolute;
-	top: 25%;
+	top: 15%;
 	left: 25%;
 	right: 25%;
 	padding: 20px;

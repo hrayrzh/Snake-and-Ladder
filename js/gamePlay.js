@@ -34,7 +34,7 @@ function movePlayer() {
 
 		//Fire move request after 1 second so that player can shift eyes from dice to board
 		setTimeout(function () {
-			player.position == 1 ? player.move(player.position + random - 1, undefined, random == 7, updateDiceName) : player.move(player.position + random, undefined, random == 7, updateDiceName);
+			player.position == 2 ? player.move(player.position + random - 1, undefined, random == 7, updateDiceName) : player.move(player.position + random, undefined, random == 7, updateDiceName);
 			//            if (random == 6) {
 			//                //Show message after the piece reaches destination
 			//                setTimeout(function() {

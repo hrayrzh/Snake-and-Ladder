@@ -51,7 +51,6 @@
 				s: 42,
 				e: 45
 			}]
-			//            ladders: []
 		};
 		this.state = {
 			playerCount: 0,
@@ -169,13 +168,13 @@
 				openPopup(pos);
 				setTimeout(function () {				
 					player.move(check, board.config.runSpeed, isSpecial, callback);
-				}, 1000);
+				}, 5000);
 			} else {
 				//(popup)
 				if (player.position) {
 					let pos = player.position;
 					console.log(player);
-					document.getElementById(player.name).innerHTML = pos;
+                    document.getElementById(player.name).innerHTML = pos;
 				openPopup(pos);
 				}
 
